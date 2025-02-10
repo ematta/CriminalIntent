@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import com.bignerdranch.android.criminalintent.database.Crime
 
+private const val TAG = "CrimeListViewModel"
+
 class CrimeListViewModel : ViewModel() {
     private val crimeRepository = CrimeRepository.get()
 

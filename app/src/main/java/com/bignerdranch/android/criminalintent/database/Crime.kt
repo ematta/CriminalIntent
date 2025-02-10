@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey
 import java.util.Date
 import java.util.UUID
 
+private const val TAG = "Crime"
+
 @Entity
 data class Crime(
     @PrimaryKey val id: UUID,
