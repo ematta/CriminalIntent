@@ -1,11 +1,11 @@
 package com.bignerdranch.android.criminalintent.database
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
-import com.bignerdranch.android.criminalintent.database.Crime
 
 @Dao
 interface CrimeDao {
@@ -17,4 +17,7 @@ interface CrimeDao {
 
     @Update
     suspend fun updateCrime(crime: Crime)
+
+    @Insert
+    suspend fun addCrime(crime: Crime)
 }

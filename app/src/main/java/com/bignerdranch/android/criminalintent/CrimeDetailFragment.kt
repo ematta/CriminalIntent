@@ -1,7 +1,9 @@
 package com.bignerdranch.android.criminalintent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
@@ -18,6 +20,7 @@ import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeDetailBi
 import com.bignerdranch.android.criminalintent.database.Crime
 import kotlinx.coroutines.launch
 import java.util.Date
+import java.util.UUID
 
 private const val TAG = "CrimeDetailFragment"
 
@@ -34,6 +37,8 @@ class CrimeDetailFragment : Fragment() {
     private val crimeDetailViewModel: CrimeDetailViewModel by viewModels {
         CrimeDetailViewModelFactory(args.crimeId)
     }
+
+    private val crimeListViewModel: CrimeListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
