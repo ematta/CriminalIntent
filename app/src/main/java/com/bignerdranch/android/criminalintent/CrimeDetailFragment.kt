@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -23,6 +24,7 @@ import java.util.Date
 import java.util.UUID
 
 private const val TAG = "CrimeDetailFragment"
+private const val DATE_FORMAT = "EEE, MMM, dd"
 
 class CrimeDetailFragment : Fragment() {
 
@@ -99,6 +101,21 @@ class CrimeDetailFragment : Fragment() {
                 )
             }
         }
+    }
+
+    private fun getCrimeReport(crime: Crime): String{
+        val solvedString = if(crime.isSolved) {
+            getString(R.string.crime_solved)
+        } else {
+            getString(R.string.crime_unsolved)
+        }
+        val dateString = DateFormat.format(DATE_FORMAT, crime.date).toString()
+        val suspectText = if(crime.suspect.isBlank()) {
+            getString(R.string.crime_report_no_suspect)
+        } else {
+            getString(R.string.crime_report_suspect, crime.suspect)
+        }
+        return getString(R.string.crime_report, crime.title, dateString, solvedString, suspectText)
     }
 
     override fun onDestroyView() {
